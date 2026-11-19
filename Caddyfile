@@ -1,0 +1,11 @@
+{$PULSEPARTY_DOMAIN} {
+  header {
+    Referrer-Policy no-referrer
+    X-Content-Type-Options nosniff
+    Strict-Transport-Security "max-age=31536000"
+  }
+  reverse_proxy relay:8787 {
+    flush_interval -1
+  }
+  # No access log: invitations and session details must not reach logs.
+}

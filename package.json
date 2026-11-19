@@ -1,0 +1,54 @@
+{
+  "name": "pulseparty",
+  "version": "0.3.0",
+  "private": true,
+  "author": "Kamilhik",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kamilhik/PulseParty-PulseSyns.git"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "build": "npm run check && npm run build:addon && npm run build:services && npm run build:host && node scripts/package.mjs",
+    "dev:cloudflare": "wrangler dev --local --port 8788",
+    "check:cloudflare": "wrangler deploy --dry-run --outdir dist/cloudflare",
+    "deploy:cloudflare": "wrangler deploy",
+    "login:cloudflare": "wrangler login --scopes account:read user:read workers_scripts:write",
+    "test:cloudflare": "tsx scripts/check-cloudflare.ts",
+    "build:host": "node scripts/build-host.mjs",
+    "build:addon": "vite build",
+    "build:services": "tsc -p tsconfig.services.json",
+    "check": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "start:relay": "node --env-file-if-exists=.env dist/services/server/main.js",
+    "start:companion": "node --env-file-if-exists=.env dist/services/companion/main.js",
+    "dev:relay": "tsx --env-file-if-exists=.env server/main.ts",
+    "preview": "vite --config vite.preview.config.ts --host 127.0.0.1",
+    "test:ui": "tsx scripts/check-ui.ts"
+  },
+  "dependencies": {
+    "@number0/iroh": "1.2.0",
+    "@pulsesync/addon-sdk": "0.20.3",
+    "@xhayper/discord-rpc": "1.5.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@electron/asar": "4.3.2",
+    "@playwright/test": "1.58.2",
+    "@types/node": "26.6.6",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.3.0",
+    "esbuild": "0.28.2",
+    "fflate": "0.8.3",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "vite": "8.3.8",
+    "wrangler": "4.164.0"
+  }
+}

@@ -1,0 +1,3 @@
+Discord Social SDK for C++ 1.11.24259 (2026-11-17).
+Download the Windows x64 package from your application's Developer Portal.
+The proprietary SDK and runtime are not included or replaced with a mock.

@@ -1,0 +1,30 @@
+services:
+  relay:
+    build: .
+    restart: unless-stopped
+    environment:
+      BIND_HOST: 0.0.0.0
+      MAX_PARTICIPANTS: ${MAX_PARTICIPANTS:-16}
+      MAX_ROOMS: ${MAX_ROOMS:-1000}
+      INVITE_TTL_MS: ${INVITE_TTL_MS:-3600000}
+      HOST_GRACE_MS: ${HOST_GRACE_MS:-20000}
+      ROOM_TTL_MS: ${ROOM_TTL_MS:-3600000}
+    expose: ["8787"]
+    mem_limit: 256m
+    pids_limit: 64
+    read_only: true
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+  caddy:
+    image: caddy:2.11.2-alpine
+    restart: unless-stopped
+    environment:
+      PULSEPARTY_DOMAIN: ${PULSEPARTY_DOMAIN:?Set your actual domain in .env}
+    ports: ["80:80", "443:443"]
+    volumes: ["./Caddyfile:/etc/caddy/Caddyfile:ro", "caddy_data:/data", "caddy_config:/config"]
+    depends_on:
+      relay:
+        condition: service_healthy
+volumes:
+  caddy_data:
+  caddy_config:

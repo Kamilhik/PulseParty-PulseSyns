@@ -1,0 +1,8 @@
+.git
+.research
+node_modules
+dist
+.env
+.shots
+companion/native/sdk
+companion/native/build

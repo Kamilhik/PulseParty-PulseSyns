@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.research/
+.env
+.shots/
+.backups/
+companion/native/build/
+companion/native/sdk/
+*.log
+*.local.json
+.wrangler/
+.dev.vars
+.env.*
+!.env.example
+.dev.vars.*
+*.pem
+*.key
