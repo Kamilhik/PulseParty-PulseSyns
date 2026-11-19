@@ -5,13 +5,15 @@ export function PartyLauncher({
   placement = "bar",
 }: {
   open: () => void | Promise<void>;
-  placement?: "bar" | "wave" | "fullscreen";
+  placement?: "bar" | "wave" | "fullscreen" | "fallback";
 }) {
   return (
     <span className="pp-launcher" data-placement={placement}>
-      <Button icon="users" size="s" color="primary" onClick={open}>
+      {placement === "fallback" ? <button type="button" onClick={() => void open()}>
         Слушать вместе
-      </Button>
+      </button> : <Button icon="users" size="s" color="primary" onClick={open}>
+        Слушать вместе
+      </Button>}
     </span>
   );
 }

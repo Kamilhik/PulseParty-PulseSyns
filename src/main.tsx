@@ -2,6 +2,8 @@ import { defineAddon, type AddonApi } from "@pulsesync/addon-sdk";
 import { PartyController } from "./controller.js";
 import { PartyOverlay } from "./overlay.js";
 import { PartyLauncher } from "./launcher.js";
+import { FallbackLauncher } from "./fallback-launcher.js";
+import { activateParty } from "./activation.js";
 import { WAVE_MOUNT_SELECTOR, FULLSCREEN_MOUNT_SELECTOR } from "./placement.js";
 import { settings } from "./settings.js";
 import "./style.css";
@@ -23,20 +25,15 @@ export default defineAddon({
   id: "pulseparty",
   name: "PulseParty",
   settings,
-  start: async (api) => {
-    const controller = new PartyController(
+  start: (api) => {
+    party = activateParty(
       api,
       __RELAY_URL__,
       __COMPANION_URL__,
       settings.store.thresholdMs,
       settings.store.cooldownMs,
+      () => { party = undefined; },
     );
-    party = controller;
-    api.onCleanup(() => {
-      controller.dispose();
-      party = undefined;
-    });
-    await controller.start();
   },
   slots: {
     playerBarButton: function PartyButton({ api }) {
@@ -45,6 +42,10 @@ export default defineAddon({
     },
   },
   mounts: [
+    {
+      target: "body",
+      component: ({ api }) => <FallbackLauncher open={() => openParty(api)} />,
+    },
     {
       target: { selector: WAVE_MOUNT_SELECTOR, all: true },
       component: ({ api }) => <PartyLauncher placement="wave" open={() => openParty(api)} />,

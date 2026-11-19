@@ -1,6 +1,6 @@
 {
   "name": "pulseparty",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "private": true,
   "author": "Kamilhik",
   "repository": {
@@ -28,6 +28,7 @@
     "dev:relay": "tsx --env-file-if-exists=.env server/main.ts",
     "preview": "vite --config vite.preview.config.ts --host 127.0.0.1",
     "test:ui": "tsx scripts/check-ui.ts"
+    ,"test:launcher": "tsx scripts/check-launcher.ts"
   },
   "dependencies": {
     "@number0/iroh": "1.2.0",

@@ -1,5 +1,7 @@
 # Аватар PulseParty — вариант 1
 
+Широкий вариант для каталога и баннера: `addon/Assets/catalog-v1.png`, создан встроенным imagegen 19.11.2026 на основе квадратного аватара. Промпт: “Preserve the exact yellow two-people/two-P pulse symbol and charcoal background. Change only framing: wide 16:9 canvas, entire symbol centered at about 50% of image height, generous padding. No text, additional objects, shadows or border.”
+
 Создан встроенным imagegen 19.11.2026. Файл: `addon/Assets/avatar-v1.png`.
 
 Идея: два человека / две буквы P, объединённые общим музыкальным пульсом. Жёлтый знак на тёмном фоне, без надписи, с запасом для круглой обрезки.

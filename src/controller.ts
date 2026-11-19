@@ -166,6 +166,9 @@ export class PartyController {
     }
   }
   get = () => this.state;
+  initializationFailed(error: unknown) {
+    this.update({ hostStatus: "unavailable", error: friendlyError(error) });
+  }
   subscribe = (fn: () => void) => {
     this.listeners.add(fn);
     return () => this.listeners.delete(fn);
