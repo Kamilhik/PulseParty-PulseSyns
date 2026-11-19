@@ -1,6 +1,6 @@
 # PulseParty
 
-Автор: [Kamilhik](https://github.com/Kamilhik). Репозиторий: [PulseParty-PulseSyns](https://github.com/Kamilhik/PulseParty-PulseSyns).
+Автор в PulseSync: **Kamilchik**, GitHub: [Kamilhik](https://github.com/Kamilhik). Репозиторий: [PulseParty-PulseSyns](https://github.com/Kamilhik/PulseParty-PulseSyns).
 
 **Разработка с использованием ИИ:** да, при реализации и проверках использовался OpenAI Codex. Аддон использует официальный WebHost SDK и структуру официального [шаблона PulseSync](https://github.com/PulseSync-LLC/PulseSync-ExampleAddon). Это сторонний аддон, не официальный продукт PulseSync или Яндекса.
 
@@ -8,7 +8,7 @@
 
 Закрытые комнаты совместного прослушивания для **обычного PulseSync** и Яндекс Музыки. Кнопка «Слушать вместе» открывает диалог поверх плеера; ведущий выбирает музыку и передаёт пульт участникам.
 
-Версия 0.3.1 использует общий HTTPS-сервис. **На компьютерах участников нужны только стандартный PulseSync и аддон.** Не требуется заменять `app.asar`, устанавливать native-модуль или запускать companion. Сервис один на компанию друзей; его можно разместить на Cloudflare Workers Free с SQLite-backed Durable Object и адресом `workers.dev`, без покупки VPS и домена.
+Версия 0.3.2 использует общий HTTPS-сервис. **На компьютерах участников нужны только стандартный PulseSync и аддон.** Не требуется заменять `app.asar`, устанавливать native-модуль или запускать companion. Сервис один на компанию друзей; его можно разместить на Cloudflare Workers Free с SQLite-backed Durable Object и адресом `workers.dev`, без покупки VPS и домена.
 
 **Сервис опубликован:** https://pulseparty.pulseparty.workers.dev. Через публичный HTTPS прошла проверка трёх HTTP-клиентов, long polling, паузы, двух передач управления, прав и отзыва приглашений. Аддон с этим адресом установлен в обычный PulseSync; в настоящей Яндекс Музыке подтверждены открытая комната и приглашение. Воспроизведение на двух настоящих аккаунтах/компьютерах остаётся непроверенным.
 
@@ -16,7 +16,7 @@
 
 ## Установка готового аддона
 
-1. Откройте [последний релиз](https://github.com/Kamilhik/PulseParty-PulseSyns/releases/latest) и скачайте `PulseParty-0.3.1.pext`.
+1. Откройте [последний релиз](https://github.com/Kamilhik/PulseParty-PulseSyns/releases/latest) и скачайте `PulseParty-0.3.2.pext`.
 2. Откройте файл через PulseSync или перетащите `.pext` в его окно, затем включите аддон.
 3. В Яндекс Музыке нажмите «Слушать вместе», создайте комнату и передайте другу приглашение. Другу нужна та же версия аддона.
 
