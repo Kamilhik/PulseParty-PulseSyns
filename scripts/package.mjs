@@ -24,7 +24,7 @@ for (const key of Object.keys(files)) delete files[key];
 await collect("dist/host", "host/");
 await writeFile("dist/PulseParty-host-Windows-x64.zip", zipSync(files, { level: 6 }));
 for(const key of Object.keys(files))delete files[key];
-for(const directory of ['src','host','server','cloudflare','shared','companion','tests','scripts','docs','preview','web','addon'])await collect(directory,directory+'/');
+for(const directory of ['src','host','server','cloudflare','shared','companion','tests','scripts','docs','preview','web','addon','.github'])await collect(directory,directory+'/');
 for(const file of ['README.md','.env.example','.gitignore','.dockerignore','package.json','package-lock.json','tsconfig.json','tsconfig.services.json','addon.config.mjs','vite.config.ts','vite.preview.config.ts','wrangler.jsonc','Dockerfile','compose.yaml','Caddyfile'])files[file]=new Uint8Array(await readFile(file));
 await writeFile('dist/PulseParty-source.zip',zipSync(files,{level:9}));
 await mkdir("dist/services/web", { recursive: true });

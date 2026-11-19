@@ -1,9 +1,8 @@
 import { loadEnv } from "vite";
 const env = { ...loadEnv("production", process.cwd(), ""), ...process.env };
 const embedded = env.PULSEPARTY_TRANSPORT === "embedded";
-const relay = env.PULSEPARTY_RELAY_URL?.trim()
-  ? new URL(env.PULSEPARTY_RELAY_URL.trim())
-  : embedded ? new URL("http://127.0.0.1:18787") : null;
+const relay = new URL(env.PULSEPARTY_RELAY_URL?.trim() ||
+  (embedded ? "http://127.0.0.1:18787" : "https://pulseparty.pulseparty.workers.dev"));
 if (relay && (relay.pathname !== "/" || relay.search || relay.hash || relay.username || relay.password))
   throw new Error("Relay must be an origin");
 if (relay && relay.protocol !== "https:" && !(relay.protocol === "http:" && ["127.0.0.1", "localhost"].includes(relay.hostname)))
@@ -15,11 +14,11 @@ export default {
   directoryName: "pulseparty",
   name: "PulseParty",
   description: "Слушайте Яндекс Музыку вместе и передавайте пульт друзьям.",
-  version: "0.3.0",
+  version: "0.3.1",
   author: "Kamilhik",
-  image: "",
+  image: "Assets/avatar-v1.png",
   banner: "",
-  libraryLogo: "",
+  libraryLogo: "Assets/avatar-v1.png",
   tags: ["music", "social"],
   dependencies: [],
   supportedVersions: [],
