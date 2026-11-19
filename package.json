@@ -27,8 +27,8 @@
     "start:companion": "node --env-file-if-exists=.env dist/services/companion/main.js",
     "dev:relay": "tsx --env-file-if-exists=.env server/main.ts",
     "preview": "vite --config vite.preview.config.ts --host 127.0.0.1",
-    "test:ui": "tsx scripts/check-ui.ts"
-    ,"test:launcher": "tsx scripts/check-launcher.ts"
+    "test:ui": "tsx scripts/check-ui.ts",
+    "test:launcher": "tsx scripts/check-launcher.ts"
   },
   "dependencies": {
     "@number0/iroh": "1.2.0",
